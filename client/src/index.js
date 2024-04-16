@@ -2,9 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App";
 import LoggedInUserProvider from "./contexts/LoggedInUserContext";
+import FetchedMoviesProvider from "./contexts/FetchedMoviesContext";
+import SelectedMovieProvider from "./contexts/SelectedMovieContext";
+import SearchedMovieProvider from "./contexts/SearchedMoviesContext";
+import UserRatingProvider from "./contexts/UserRatingContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <LoggedInUserProvider>
-    <App />
+    <UserRatingProvider>
+      <FetchedMoviesProvider>
+        <SelectedMovieProvider>
+          <SearchedMovieProvider>
+          <App />
+          </SearchedMovieProvider>
+        </SelectedMovieProvider>
+      </FetchedMoviesProvider>
+    </UserRatingProvider>
   </LoggedInUserProvider>
 );
