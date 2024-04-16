@@ -6,7 +6,6 @@ const { MONGO_URI } = process.env;
 const removeRating = async (req, res) => {
   const client = new MongoClient(MONGO_URI);
   const { user } = req.body;
-  console.log(user);
   try {
     await client.connect();
     const db = client.db("ImdbWorld");

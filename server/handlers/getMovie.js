@@ -11,7 +11,6 @@ const getMovie = async (req, res) => {
     const db = client.db("ImdbWorld");
     const query = { id: Number(id) };
     const foundMovie = await db.collection("movies").findOne(query);
-    console.log(foundMovie);
     if (!foundMovie) {
         res.status(404).json({
           status: 404,

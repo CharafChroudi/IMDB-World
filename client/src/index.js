@@ -6,6 +6,7 @@ import FetchedMoviesProvider from "./contexts/FetchedMoviesContext";
 import SelectedMovieProvider from "./contexts/SelectedMovieContext";
 import SearchedMovieProvider from "./contexts/SearchedMoviesContext";
 import UserRatingProvider from "./contexts/UserRatingContext";
+import NotificationProvider from "./contexts/NotificationContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <LoggedInUserProvider>
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <FetchedMoviesProvider>
         <SelectedMovieProvider>
           <SearchedMovieProvider>
-          <App />
+            <NotificationProvider>
+              <App />
+            </NotificationProvider>
           </SearchedMovieProvider>
         </SelectedMovieProvider>
       </FetchedMoviesProvider>

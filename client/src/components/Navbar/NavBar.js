@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { LoggedInUserContext } from "../../contexts/LoggedInUserContext";
 import { FetchedMoviesContext } from "../../contexts/FetchedMoviesContext";
 import { SearchedMovieContext } from "../../contexts/SearchedMoviesContext";
@@ -12,10 +12,9 @@ import GoogleSignIn from "../SignIn/GoogleSignIn";
 const NavBar = () => {
   const navigate = useNavigate();
   const { LoggedInUser, setLoggedInUser } = useContext(LoggedInUserContext);
-  const { moviesHaveBeenSearched , setMoviesHaveBeenSearched } =
+  const { moviesHaveBeenSearched, setMoviesHaveBeenSearched } =
     useContext(SearchedMovieContext);
-  const { setMoviesList, addMovies, getMovies } =
-    useContext(FetchedMoviesContext);
+  const { getMovies } = useContext(FetchedMoviesContext);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleClick = (to) => {
@@ -55,6 +54,7 @@ const NavBar = () => {
         <NavigationLink
           to="/"
           onClick={() => {
+            handleSearchOff();
             handleClick("/");
           }}
         >

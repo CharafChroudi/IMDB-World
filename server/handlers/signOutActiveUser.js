@@ -6,7 +6,6 @@ const { MONGO_URI } = process.env;
 const signOutActiveUser = async (req, res) => {
   const client = new MongoClient(MONGO_URI);
   const { email } = req.body;
-  console.log(email);
   try {
     await client.connect();
     const db = client.db("ImdbWorld");

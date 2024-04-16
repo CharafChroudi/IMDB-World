@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { SelectedMovieContext } from "../../contexts/SelectedMovieContext";
 import { useNavigate } from "react-router-dom";
+
 const MovieCard = ({ movie }) => {
   const { setSelectedMovie } = useContext(SelectedMovieContext);
   const navigate = useNavigate();

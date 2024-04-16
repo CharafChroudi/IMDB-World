@@ -4,12 +4,20 @@ export const SearchedMovieContext = React.createContext();
 
 const SearchedMovieProvider = ({ children }) => {
   const [searchedMovie, setSearchedMovie] = useState("");
+  const [searchedMoviesList, setSearchedMovieList] = useState([]);
   const [moviesHaveBeenSearched, setMoviesHaveBeenSearched] = useState(false);
 
   useEffect(() => {}, [searchedMovie]);
   return (
     <SearchedMovieContext.Provider
-      value={{ searchedMovie,moviesHaveBeenSearched, setSearchedMovie, setMoviesHaveBeenSearched }}
+      value={{
+        searchedMovie,
+        searchedMoviesList,
+        moviesHaveBeenSearched,
+        setSearchedMovie,
+        setSearchedMovieList,
+        setMoviesHaveBeenSearched,
+      }}
     >
       {children}
     </SearchedMovieContext.Provider>

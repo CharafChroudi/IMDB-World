@@ -1,12 +1,17 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { FetchedMoviesContext } from "../../contexts/FetchedMoviesContext";
 import { SelectedMovieContext } from "../../contexts/SelectedMovieContext";
 import { SearchedMovieContext } from "../../contexts/SearchedMoviesContext";
 
 const SearchBar = () => {
-  const { searchedMovie, setSearchedMovie, setMoviesHaveBeenSearched } =
-    useContext(SearchedMovieContext);
-  const { setMoviesList, addMovies } = useContext(FetchedMoviesContext);
+  const {
+    searchedMovie,
+    setSearchedMovie,
+    setMoviesHaveBeenSearched,
+    setSearchedMovieList,
+  } = useContext(SearchedMovieContext);
+  const { moviesList, setMoviesList, addMovies } =
+    useContext(FetchedMoviesContext);
   const { setSelectedMovie } = useContext(SelectedMovieContext);
 
   function handleChange(event) {
@@ -27,7 +32,8 @@ const SearchBar = () => {
     )
       .then((response) => response.json())
       .then((response) => {
-        setMoviesList(response.results);
+        setMoviesList([...moviesList, ...response.results]);
+        setSearchedMovieList(response.results);
         addMovies(response.results);
         setSearchedMovie("");
         setSelectedMovie(null);

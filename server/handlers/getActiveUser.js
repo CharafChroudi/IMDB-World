@@ -17,7 +17,6 @@ const getActiveUser = async (req, res) => {
         message: `No user is active right now !!`,
       });
     }
-    console.log(foundActive);
     return res.status(200).json({
       status: 200,
       data: foundActive,

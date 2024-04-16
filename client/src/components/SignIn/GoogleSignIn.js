@@ -1,9 +1,9 @@
-import { LoggedInUserContext } from "../../contexts/LoggedInUserContext";
 import { useContext } from "react";
 import { styled } from "styled-components";
+import { LoggedInUserContext } from "../../contexts/LoggedInUserContext";
 
 const GoogleSignIn = () => {
-  const { LoggedInUser, setIsUserLoggedIn } = useContext(LoggedInUserContext);
+  const { LoggedInUser } = useContext(LoggedInUserContext);
   const navigate = (url) => {
     window.location.href = url;
   };

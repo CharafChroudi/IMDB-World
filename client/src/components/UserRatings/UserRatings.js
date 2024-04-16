@@ -10,9 +10,9 @@ import MoviesList from "../MoviesList/MoviesList";
 
 const UserRatings = () => {
   const { userRatings, setSelectedMovieRating } = useContext(UserRatingContext);
-  const { selectedMovie, setSelectedMovie } = useContext(SelectedMovieContext);
+  const { setSelectedMovie } = useContext(SelectedMovieContext);
   const { moviesList } = useContext(FetchedMoviesContext);
-  const { searchedMovie, moviesHaveBeenSearched, setMoviesHaveBeenSearched } =
+  const { moviesHaveBeenSearched, setMoviesHaveBeenSearched } =
     useContext(SearchedMovieContext);
   const navigate = useNavigate();
 

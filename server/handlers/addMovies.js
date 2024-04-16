@@ -6,7 +6,6 @@ const { MONGO_URI } = process.env;
 const addMovies = async (req, res) => {
   const client = new MongoClient(MONGO_URI);
   const moviesToAdd = req.body;
-  console.log(moviesToAdd);
   try {
     await client.connect();
     const db = client.db("ImdbWorld");

@@ -1,9 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 
 export const FetchedMoviesContext = React.createContext();
 
 const FetchedMoviesProvider = ({ children }) => {
   const [moviesList, setMoviesList] = useState([]);
+
   const addMovies = (movies) => {
     fetch("/AddMovies", {
       method: "POST",
@@ -14,7 +15,7 @@ const FetchedMoviesProvider = ({ children }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        return data;
+        setMoviesList(data.data);
       })
       .catch((err) => console.error(err));
   };
@@ -34,7 +35,7 @@ const FetchedMoviesProvider = ({ children }) => {
       .then((response) => response.json())
       .then((response) => {
         addMovies(response.results);
-        setMoviesList(response.results);
+        setMoviesList([...moviesList, ...response.results]);
       })
       .catch((err) => console.error(err));
   };
