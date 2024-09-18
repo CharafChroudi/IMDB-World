@@ -22,7 +22,6 @@ const getUserData = async (access_token) => {
 
 router.get("/", async (req, res) => {
   const client = new MongoClient(MONGO_URI);
-
   const code = req.query.code;
   try {
     await client.connect();
@@ -35,11 +34,13 @@ router.get("/", async (req, res) => {
       redirectUrl
     );
     const response = await oAuth2Client.getToken(code);
+    console.log(response);
     await oAuth2Client.setCredentials(response.tokens);
     console.log("Token acquired");
 
     const user = oAuth2Client.credentials;
     const userData = await getUserData(user.access_token);
+    console.log(userData);
     const userToBeAdded = {
       ...userData,
       isActive: true,

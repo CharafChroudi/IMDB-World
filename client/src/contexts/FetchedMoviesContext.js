@@ -14,9 +14,6 @@ const FetchedMoviesProvider = ({ children }) => {
       body: JSON.stringify(movies),
     })
       .then((response) => response.json())
-      .then((data) => {
-        setMoviesList(data.data);
-      })
       .catch((err) => console.error(err));
   };
   const getMovies = () => {

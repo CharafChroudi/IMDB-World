@@ -6,7 +6,6 @@ import Home from "./Home";
 const Login = () => {
   const { setLoggedInUser } = useContext(LoggedInUserContext);
   const location = useLocation();
-
   const fetchUserData = async () => {
     try {
       const code = new URLSearchParams(location.search).get("code");
